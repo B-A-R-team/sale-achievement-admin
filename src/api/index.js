@@ -1,12 +1,11 @@
 /*
  * @Author: Mengyu Xu
  * @Date: 2020-12-30 13:59:30
- * @LastEditTime: 2020-12-30 14:40:38
+ * @LastEditTime: 2020-12-30 14:45:49
  * @FilePath: \admin\src\api\index.js
  */
 
 import axios from 'axios';
-
 import warnning from '../utils/warnning';
 
 const request = axios.create({
