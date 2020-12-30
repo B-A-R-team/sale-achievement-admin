@@ -1,12 +1,12 @@
 /*
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 12:41:26
+ * @LastEditTime: 2020-12-30 15:19:57
  * @FilePath: \sale-achievement-admin\src\router\index.js
  */
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/views/Home.vue';
+import Login from '@/views/Login';
 const routes = [
   {
     path: '/',
@@ -17,14 +17,15 @@ const routes = [
       {
         path: '/staffInfo',
         name:'StaffInfo',
-        component:() => import('../views/StaffInfo.vue')
+        component:() => import('../views/StaffInfo/StaffInfo.vue')
       },
       {
         path: '/customers',
         name:'customers',
-        component:() => import('../views/Customers.vue')
+        component:() => import('../views/Customers/Customers.vue')
       }
-    ]
+    ],
+
   },
   {
     path: '/login',
@@ -32,13 +33,20 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: Login
-  }
-]
+    component: Login,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+});
+router.beforeEach((to, from, next) => {
+  const token = sessionStorage.getItem('token')
+
+  if (to.name !== 'Login' && !token) next({ name: 'Login' })
+  // 如果用户未能验证身份，则 `next` 会被调用两次
+  next()
 })
 
-export default router
+export default router;

@@ -7,7 +7,11 @@
 -->
 <template>
   <a-card title="Card title">
-    <a-table :columns="columns" :data-source="data">
+    <a-table
+     :columns="columns" 
+    :data-source="data"
+    pagination={}
+    >
       <template #name="{ text }">
         <a>{{ text }}</a>
       </template>

@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 10:29:13
- * @FilePath: \sale-achievement-admin\src\App.vue
+ * @LastEditTime: 2020-12-30 14:46:50
+ * @FilePath: \admin\src\App.vue
 -->
 <template>
   <div class="app">
@@ -14,9 +14,8 @@
 
 <script>
 export default {
-  name: "App",
-  setup() {
-  },
+  name: 'App',
+  setup() {},
 };
 </script>
 <style lang="less">

@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 18:14:57
- * @LastEditTime: 2020-12-30 12:44:49
+ * @LastEditTime: 2020-12-30 14:50:30
  * @FilePath: \sale-achievement-admin\src\views\Home.vue
 -->
 <template>
@@ -62,7 +62,10 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
+// import { onMounted } from 'vue';
+// import { useRouter } from 'vue-router';
+
 export default {
   components: {
     UserOutlined,
@@ -71,9 +74,15 @@ export default {
   },
   data() {
     return {
-      selectedKeys: ["1"],
+      selectedKeys: ['1'],
       collapsed: false,
     };
+  },
+  setup() {
+    // const router = useRouter();
+    // onMounted(() => {
+    //   router.push('login');
+    // });
   },
 };
 </script>
