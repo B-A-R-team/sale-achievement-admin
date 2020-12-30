@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 18:14:57
- * @LastEditTime: 2020-12-30 10:04:11
+ * @LastEditTime: 2020-12-30 12:44:49
  * @FilePath: \sale-achievement-admin\src\views\Home.vue
 -->
 <template>
@@ -10,9 +10,18 @@
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
         <a-menu-item key="1">
-          <user-outlined />
-          <span>nav 1</span>
+          <router-link to="/staffInfo">
+            <user-outlined />
+            <span>员工管理</span>
+          </router-link>
         </a-menu-item>
+        <a-menu-item key="2">
+          <router-link to="/customers">
+            <user-outlined />
+            <span>客户管理</span>
+          </router-link>
+        </a-menu-item>
+        <!-- <router-view></router-view> -->
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -41,7 +50,7 @@
           minHeight: '280px',
         }"
       >
-        Content
+        <router-view></router-view>
       </a-layout-content>
       <a-layout-footer>Footer</a-layout-footer>
     </a-layout>
@@ -89,14 +98,14 @@ export default {
     margin: 16px;
   }
   .ant-layout-content {
-    margin-top: 16px!important;
+    margin-top: 16px !important;
   }
   .ant-layout-footer {
     padding-top: 0;
     text-align: center;
   }
   .ant-breadcrumb {
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
     padding-left: 20px;
   }
 }

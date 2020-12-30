@@ -1,7 +1,7 @@
 /*
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 10:07:02
+ * @LastEditTime: 2020-12-30 12:41:26
  * @FilePath: \sale-achievement-admin\src\router\index.js
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -11,7 +11,20 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    redirect:'/staffInfo',
+    children: [
+      {
+        path: '/staffInfo',
+        name:'StaffInfo',
+        component:() => import('../views/StaffInfo.vue')
+      },
+      {
+        path: '/customers',
+        name:'customers',
+        component:() => import('../views/Customers.vue')
+      }
+    ]
   },
   {
     path: '/login',
