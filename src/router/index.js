@@ -1,7 +1,7 @@
 /*
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 15:19:57
+ * @LastEditTime: 2020-12-30 15:28:22
  * @FilePath: \sale-achievement-admin\src\router\index.js
  */
 import { createRouter, createWebHistory } from 'vue-router';
@@ -12,17 +12,17 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    redirect:'/staffInfo',
+    redirect: '/staffInfo',
     children: [
       {
         path: '/staffInfo',
-        name:'StaffInfo',
-        component:() => import('../views/StaffInfo/StaffInfo.vue')
+        name: 'StaffInfo',
+        component: () => import('../views/StaffInfo/StaffInfo.vue')
       },
       {
         path: '/customers',
-        name:'customers',
-        component:() => import('../views/Customers/Customers.vue')
+        name: 'customers',
+        component: () => import('../views/Customers/Customers.vue')
       }
     ],
 
@@ -43,7 +43,10 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem('token')
-
+  console.log(to, from)
+  if (to.name === 'Login' && token) {
+    return next({name:'Home'})
+  }
   if (to.name !== 'Login' && !token) next({ name: 'Login' })
   // 如果用户未能验证身份，则 `next` 会被调用两次
   next()
