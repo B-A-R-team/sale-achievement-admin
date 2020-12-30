@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 10:08:25
+ * @LastEditTime: 2020-12-30 10:29:13
  * @FilePath: \sale-achievement-admin\src\App.vue
 -->
 <template>
@@ -15,11 +15,12 @@
 <script>
 export default {
   name: "App",
-  setup() {},
+  setup() {
+  },
 };
 </script>
 <style lang="less">
- .app {
-   height: 100vh;
- }
+.app {
+  height: 100vh;
+}
 </style>
