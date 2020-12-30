@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 18:14:57
- * @LastEditTime: 2020-12-30 10:04:11
- * @FilePath: \sale-achievement-admin\src\views\Home.vue
+ * @LastEditTime: 2020-12-30 14:22:10
+ * @FilePath: \admin\src\views\Home.vue
 -->
 <template>
   <a-layout id="components-layout-demo-custom-trigger">
@@ -53,7 +53,10 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
+// import { onMounted } from 'vue';
+// import { useRouter } from 'vue-router';
+
 export default {
   components: {
     UserOutlined,
@@ -62,9 +65,15 @@ export default {
   },
   data() {
     return {
-      selectedKeys: ["1"],
+      selectedKeys: ['1'],
       collapsed: false,
     };
+  },
+  setup() {
+    // const router = useRouter();
+    // onMounted(() => {
+    //   router.push('login');
+    // });
   },
 };
 </script>
@@ -89,14 +98,14 @@ export default {
     margin: 16px;
   }
   .ant-layout-content {
-    margin-top: 16px!important;
+    margin-top: 16px !important;
   }
   .ant-layout-footer {
     padding-top: 0;
     text-align: center;
   }
   .ant-breadcrumb {
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
     padding-left: 20px;
   }
 }

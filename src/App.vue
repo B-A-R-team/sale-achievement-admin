@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 10:08:25
- * @FilePath: \sale-achievement-admin\src\App.vue
+ * @LastEditTime: 2020-12-30 12:48:14
+ * @FilePath: \admin\src\App.vue
 -->
 <template>
   <div class="app">
@@ -14,12 +14,12 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   setup() {},
 };
 </script>
 <style lang="less">
- .app {
-   height: 100vh;
- }
+.app {
+  height: 100vh;
+}
 </style>
