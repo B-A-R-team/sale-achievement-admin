@@ -540,3 +540,222 @@
     data: []
 }
 ```
+
+
+
+### 课程接口
+
+#### 获取所有课程
+
+**URL：**`api/v1/course`
+
+**描述：**获取所有课程
+
+**方法：**GET
+
+**参数：**无
+
+**成功响应：**
+
+```json
+{
+    code: 200,
+    message: 'success',
+    data: [
+        {
+            id: 1,
+            name: '高一数学下', // 课程名称
+            teacher: '小明', // 课程的教师
+            price: 1200
+        }
+    ]
+}
+```
+
+**失败响应：**
+
+```json
+{
+    code: 500,
+    message: 'error',
+    data: []
+}
+```
+
+
+
+#### 获取某门课程
+
+**URL：**`api/v1/course/:id`
+
+**描述：**获取某门课程
+
+**方法：**GET
+
+**Params参数：**
+
+| 参数名 | 必选 | 类型   | 说明   |
+| ------ | ---- | ------ | ------ |
+| id     | √    | number | 课程ID |
+
+**成功响应：**
+
+```json
+{
+    code: 200,
+    message: 'success',
+    data: {
+        id: 1,
+        name: '高一数学下', // 课程名称
+        teacher: '小明', // 课程的教师
+        price: 1200
+    }
+}
+```
+
+**失败响应：**
+
+```json
+{
+    code: 500,
+    message: 'error',
+    data: []
+}
+```
+
+
+
+#### 添加课程
+
+**URL：**`api/v1/course`
+
+**描述：**获取某门课程
+
+**方法：**POST
+
+**header参数：**
+
+| 参数名        | 必选 | 类型   | 说明  |
+| ------------- | ---- | ------ | ----- |
+| Authorization | √    | string | token |
+
+**Body参数：**
+
+| 参数名  | 必选 | 类型   | 说明     |
+| ------- | ---- | ------ | -------- |
+| name    | √    | string | 课程名   |
+| teacher | √    | string | 教师名   |
+| price   | √    | number | 课程价格 |
+
+**成功响应：**
+
+```json
+{
+    code: 200,
+    message: 'success',
+    data: // 我也忘了是啥，以前写的
+}
+```
+
+**失败响应：**
+
+```json
+{
+    code: 500,
+    message: 'error',
+    data: []
+}
+```
+
+
+
+#### 修改课程
+
+**URL：**`api/v1/course/:id`
+
+**描述：**修改某门课程
+
+**方法：**PUT
+
+**header参数：**
+
+| 参数名        | 必选 | 类型   | 说明  |
+| ------------- | ---- | ------ | ----- |
+| Authorization | √    | string | token |
+
+**Params参数：**
+
+| 参数名 | 必选 | 类型   | 说明   |
+| ------ | ---- | ------ | ------ |
+| id     | √    | number | 课程ID |
+
+**Body参数：**
+
+| 参数名  | 必选 | 类型   | 说明     |
+| ------- | ---- | ------ | -------- |
+| name    | √    | string | 课程名   |
+| teacher | √    | string | 教师名   |
+| price   | √    | number | 课程价格 |
+
+**成功响应：**
+
+```json
+{
+    code: 200,
+    message: 'success',
+    data: // 我也忘了是啥，以前写的
+}
+```
+
+**失败响应：**
+
+```json
+{
+    code: 500,
+    message: 'error',
+    data: []
+}
+```
+
+
+
+#### 删除某门课程
+
+**URL：**`api/v1/course/:id`
+
+**描述：**获取某门课程
+
+**方法：**DELETE
+
+**header参数：**
+
+| 参数名        | 必选 | 类型   | 说明  |
+| ------------- | ---- | ------ | ----- |
+| Authorization | √    | string | token |
+
+**Params参数：**
+
+| 参数名 | 必选 | 类型   | 说明   |
+| ------ | ---- | ------ | ------ |
+| id     | √    | number | 课程ID |
+
+**成功响应：**
+
+```json
+{
+    code: 200,
+    message: 'success',
+    data: // 我也忘了是啥，以前写的
+}
+```
+
+**失败响应：**
+
+```json
+{
+    code: 500,
+    message: 'error',
+    data: []
+}
+```
+
