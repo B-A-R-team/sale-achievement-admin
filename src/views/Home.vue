@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 18:14:57
- * @LastEditTime: 2020-12-30 14:50:30
- * @FilePath: \sale-achievement-admin\src\views\Home.vue
+ * @LastEditTime: 2020-12-30 16:31:05
+ * @FilePath: \admin\src\views\Home.vue
 -->
 <template>
   <a-layout id="components-layout-demo-custom-trigger">
@@ -52,7 +52,9 @@
       >
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
+      <a-layout-footer>
+        Copyright © 2016-2020 BAR Team. All rights reserved.
+      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>

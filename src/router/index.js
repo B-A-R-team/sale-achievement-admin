@@ -1,8 +1,8 @@
 /*
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 15:28:22
- * @FilePath: \sale-achievement-admin\src\router\index.js
+ * @LastEditTime: 2020-12-30 15:34:25
+ * @FilePath: \admin\src\router\index.js
  */
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
@@ -22,7 +22,7 @@ const routes = [
       {
         path: '/customers',
         name: 'customers',
-        component: () => import('../views/Customers/Customers.vue')
+        component: () => import('../views/Customers')
       }
     ],
 

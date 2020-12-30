@@ -1,7 +1,7 @@
 /*
  * @Author: Mengyu Xu
  * @Date: 2020-12-30 13:59:30
- * @LastEditTime: 2020-12-30 14:45:49
+ * @LastEditTime: 2020-12-30 15:48:50
  * @FilePath: \admin\src\api\index.js
  */
 
@@ -10,14 +10,14 @@ import warnning from '../utils/warnning';
 
 const request = axios.create({
   baseURL: 'https://www.barteam.cn:2992/api/v1/',
-  timeout: 6000,
+  // timeout: 6000,
 });
 
 request.interceptors.request.use(
   (config) => {
     const token = window.sessionStorage.getItem('token') || '';
     if (token !== '') {
-      config.headers.Authorization = token;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
