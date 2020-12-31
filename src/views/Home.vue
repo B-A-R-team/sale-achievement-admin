@@ -17,7 +17,7 @@
         </a-menu-item>
         <a-menu-item key="2">
           <router-link to="/customers">
-            <user-outlined />
+            <solution-outlined />
             <span>客户管理</span>
           </router-link>
         </a-menu-item>
@@ -64,6 +64,7 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  SolutionOutlined,
 } from '@ant-design/icons-vue';
 // import { onMounted } from 'vue';
 // import { useRouter } from 'vue-router';
@@ -73,6 +74,7 @@ export default {
     UserOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    SolutionOutlined,
   },
   data() {
     return {

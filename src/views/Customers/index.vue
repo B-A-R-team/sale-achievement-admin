@@ -21,8 +21,8 @@
       :pagination="{ pageSize: 8, total: total }"
       :loading="loading"
     >
-      <template #action>
-        <a-button>查看</a-button>
+      <template #action="{record}">
+        <a-button @click="toInfo(record.key)">详情</a-button>
       </template>
     </a-table>
   </div>
@@ -34,10 +34,12 @@ import request from '../../api';
 import warnning from '../../utils/warnning';
 import useSearch from '../../composables/useSearch';
 import './index.less';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const { customerData, total, loading, columns } = useCustomerTable();
+    const router = useRouter();
 
     const requestData = async () => {
       loading.value = true;
@@ -69,6 +71,10 @@ export default {
       warnning('错误', '数据请求失败');
     };
 
+    const toInfo = async (key) => {
+      router.push(`/customers/${key}`);
+    };
+
     onMounted(() => {
       requestData();
     });
@@ -79,6 +85,7 @@ export default {
       customerData,
       loading,
       columns,
+      toInfo,
     };
   },
 };

@@ -17,15 +17,19 @@ const routes = [
       {
         path: '/staffInfo',
         name: 'StaffInfo',
-        component: () => import('../views/StaffInfo/StaffInfo.vue')
+        component: () => import('../views/StaffInfo/StaffInfo.vue'),
       },
       {
         path: '/customers',
         name: 'customers',
-        component: () => import('../views/Customers')
-      }
+        component: () => import('../views/Customers'),
+      },
+      {
+        path: '/customers/:id',
+        name: 'customerInfo',
+        component: () => import('../views/Customers/CustomerInfo'),
+      },
     ],
-
   },
   {
     path: '/login',
@@ -42,14 +46,14 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-  const token = sessionStorage.getItem('token')
-  console.log(to, from)
+  const token = sessionStorage.getItem('token');
+  console.log(to, from);
   if (to.name === 'Login' && token) {
-    return next({name:'Home'})
+    return next({ name: 'Home' });
   }
-  if (to.name !== 'Login' && !token) next({ name: 'Login' })
+  if (to.name !== 'Login' && !token) next({ name: 'Login' });
   // 如果用户未能验证身份，则 `next` 会被调用两次
-  next()
-})
+  next();
+});
 
 export default router;
