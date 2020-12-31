@@ -21,6 +21,12 @@
             <span>客户管理</span>
           </router-link>
         </a-menu-item>
+        <a-menu-item key="3">
+          <router-link to="/course">
+            <book-outlined />
+            <span>课程管理</span>
+          </router-link>
+        </a-menu-item>
         <!-- <router-view></router-view> -->
       </a-menu>
     </a-layout-sider>
@@ -53,7 +59,7 @@
         <router-view></router-view>
       </a-layout-content>
       <a-layout-footer>
-        Copyright © 2016-2020 BAR Team. All rights reserved.
+        Copyright © 2020 BAR Team. All rights reserved.
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -65,6 +71,7 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   SolutionOutlined,
+  BookOutlined,
 } from '@ant-design/icons-vue';
 import { watch, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
@@ -77,6 +84,7 @@ const useBreadCrumb = () => {
     const routerReg = [
       { path: /^\/staffInfo$/, label: ['员工管理'] },
       { path: /^\/customers$/, label: ['客户管理'] },
+      { path: /^\/course$/, label: ['课程管理'] },
       { path: /^\/customers\/\d/, label: ['客户管理', '客户详情'] },
     ];
 
@@ -107,6 +115,7 @@ export default {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     SolutionOutlined,
+    BookOutlined,
   },
   data() {
     return {

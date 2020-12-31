@@ -29,6 +29,11 @@ const routes = [
         name: 'customerInfo',
         component: () => import('../views/Customers/CustomerInfo'),
       },
+      {
+        path: '/course',
+        name: 'course',
+        component: () => import('../views/Course'),
+      },
     ],
   },
   {
