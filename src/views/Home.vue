@@ -38,9 +38,9 @@
         />
       </a-layout-header>
       <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
+        <a-breadcrumb-item v-for="(item, index) in breadCrumb" :key="index">
+          {{ item }}
+        </a-breadcrumb-item>
       </a-breadcrumb>
       <a-layout-content
         :style="{
@@ -66,8 +66,40 @@ import {
   MenuFoldOutlined,
   SolutionOutlined,
 } from '@ant-design/icons-vue';
-// import { onMounted } from 'vue';
-// import { useRouter } from 'vue-router';
+import { watch, ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const useBreadCrumb = () => {
+  const breadCrumb = ref(['首页']);
+  const router = useRouter();
+
+  const mapToLabel = (fullPath) => {
+    const routerReg = [
+      { path: /^\/staffInfo$/, label: ['员工管理'] },
+      { path: /^\/customers$/, label: ['客户管理'] },
+      { path: /^\/customers\/\d/, label: ['客户管理', '客户详情'] },
+    ];
+
+    return routerReg.filter((item) => {
+      return item.path.test(fullPath);
+    });
+  };
+  watch(router.currentRoute, (val) => {
+    const { fullPath } = val;
+    breadCrumb.value = ['首页', ...mapToLabel(fullPath)[0].label];
+  });
+
+  onMounted(() => {
+    breadCrumb.value = [
+      '首页',
+      ...mapToLabel(router.currentRoute.value.fullPath)[0].label,
+    ];
+  });
+
+  return {
+    breadCrumb,
+  };
+};
 
 export default {
   components: {
@@ -83,10 +115,9 @@ export default {
     };
   },
   setup() {
-    // const router = useRouter();
-    // onMounted(() => {
-    //   router.push('login');
-    // });
+    return {
+      ...useBreadCrumb(),
+    };
   },
 };
 </script>
