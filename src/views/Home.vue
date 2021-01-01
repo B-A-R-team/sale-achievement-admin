@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2020-12-29 18:14:57
- * @LastEditTime: 2020-12-30 14:50:30
- * @FilePath: \sale-achievement-admin\src\views\Home.vue
+ * @LastEditTime: 2020-12-30 16:31:05
+ * @FilePath: \admin\src\views\Home.vue
 -->
 <template>
   <a-layout id="components-layout-demo-custom-trigger">
@@ -17,8 +17,14 @@
         </a-menu-item>
         <a-menu-item key="2">
           <router-link to="/customers">
-            <user-outlined />
+            <solution-outlined />
             <span>客户管理</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="3">
+          <router-link to="/course">
+            <book-outlined />
+            <span>课程管理</span>
           </router-link>
         </a-menu-item>
         <!-- <router-view></router-view> -->
@@ -38,9 +44,9 @@
         />
       </a-layout-header>
       <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
+        <a-breadcrumb-item v-for="(item, index) in breadCrumb" :key="index">
+          {{ item }}
+        </a-breadcrumb-item>
       </a-breadcrumb>
       <a-layout-content
         :style="{
@@ -52,7 +58,9 @@
       >
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
+      <a-layout-footer>
+        Copyright © 2020 BAR Team. All rights reserved.
+      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
@@ -62,15 +70,52 @@ import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  SolutionOutlined,
+  BookOutlined,
 } from '@ant-design/icons-vue';
-// import { onMounted } from 'vue';
-// import { useRouter } from 'vue-router';
+import { watch, ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const useBreadCrumb = () => {
+  const breadCrumb = ref(['首页']);
+  const router = useRouter();
+
+  const mapToLabel = (fullPath) => {
+    const routerReg = [
+      { path: /^\/staffInfo$/, label: ['员工管理'] },
+      { path: /^\/customers$/, label: ['客户管理'] },
+      { path: /^\/course$/, label: ['课程管理'] },
+      { path: /^\/customers\/\d/, label: ['客户管理', '客户详情'] },
+    ];
+
+    return routerReg.filter((item) => {
+      return item.path.test(fullPath);
+    });
+  };
+  watch(router.currentRoute, (val) => {
+    const { fullPath } = val;
+    breadCrumb.value = ['首页', ...mapToLabel(fullPath)[0].label];
+  });
+
+  onMounted(() => {
+    breadCrumb.value = [
+      '首页',
+      ...mapToLabel(router.currentRoute.value.fullPath)[0].label,
+    ];
+  });
+
+  return {
+    breadCrumb,
+  };
+};
 
 export default {
   components: {
     UserOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    SolutionOutlined,
+    BookOutlined,
   },
   data() {
     return {
@@ -79,10 +124,9 @@ export default {
     };
   },
   setup() {
-    // const router = useRouter();
-    // onMounted(() => {
-    //   router.push('login');
-    // });
+    return {
+      ...useBreadCrumb(),
+    };
   },
 };
 </script>

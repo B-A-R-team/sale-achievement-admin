@@ -1,7 +1,7 @@
 /*
  * @Author: lts
  * @Date: 2020-12-30 22:47:49
- * @LastEditTime: 2021-01-01 10:22:41
+ * @LastEditTime: 2021-01-01 10:32:11
  * @FilePath: \sale-achievement-admin\src\views\StaffInfo\staffInfo.js
  */
 import { message } from 'ant-design-vue';
@@ -49,6 +49,7 @@ const staffInfo = () => {
     let total = ref(1)
     const getInfo = async () => {
         const res = await axios('staff')
+        console.log(res)
         if (res.code === 200) {
             res.data.forEach((item, index) => {
                 item.key = (index + 1).toString()
