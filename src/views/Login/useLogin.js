@@ -1,8 +1,8 @@
 /*
  * @Author: Mengyu Xu
  * @Date: 2020-12-30 14:26:14
- * @LastEditTime: 2020-12-30 14:37:25
- * @FilePath: \admin\src\views\Login\useLogin.js
+ * @LastEditTime: 2020-12-30 23:30:17
+ * @FilePath: \sale-achievement-admin\src\views\Login\useLogin.js
  */
 import { ref } from 'vue';
 import request from '../../api';
@@ -33,7 +33,7 @@ const useLogin = () => {
     loading.value = false;
 
     if (result.code === 200) {
-      window.sessionStorage.setItem('token', result.token);
+      window.sessionStorage.setItem('token', 'Bearer ' + result.token);
       window.sessionStorage.setItem('userInfo', JSON.stringify(result.data));
       router.replace('/');
       return;

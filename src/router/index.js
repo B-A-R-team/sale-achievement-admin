@@ -1,12 +1,13 @@
 /*
  * @Author: lts
  * @Date: 2020-12-29 16:43:00
- * @LastEditTime: 2020-12-30 15:28:22
+ * @LastEditTime: 2020-12-31 09:22:45
  * @FilePath: \sale-achievement-admin\src\router\index.js
  */
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Login from '@/views/Login';
+import StaffInfo from '../views/StaffInfo/StaffInfo.vue'
 const routes = [
   {
     path: '/',
@@ -17,7 +18,7 @@ const routes = [
       {
         path: '/staffInfo',
         name: 'StaffInfo',
-        component: () => import('../views/StaffInfo/StaffInfo.vue')
+        component: StaffInfo
       },
       {
         path: '/customers',
@@ -43,7 +44,6 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem('token')
-  console.log(to, from)
   if (to.name === 'Login' && token) {
     return next({name:'Home'})
   }
